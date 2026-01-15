@@ -1,0 +1,33 @@
+version: 1
+
+# Source definitions
+# Multiple sources can be defined for importing skills from different locations
+sources:
+  # Local source pointing to this repository's skills directory
+  local:
+    type: local
+    root: .
+    skills_root: skills
+
+  # Example: External hub as git submodule
+  # hub:
+  #   type: local
+  #   root: .skills-hub
+  #   skills_root: skills
+
+# Skills to install
+# Each skill is copied from a source to a destination directory
+install:
+  # Example: Import skill-creator from anthropic public skills
+  - id: skill-creator
+    from: local:public/anthropic/skills/skill-creator
+    to: .agent/skills/skill-creator
+
+  # Example: Import custom skills (uncomment to enable)
+  # - id: unit-test-generator
+  #   from: local:custom/unit-test-generator
+  #   to: .agent/skills/unit-test-generator
+
+  # - id: python-project-scaffold
+  #   from: local:custom/python-project-scaffold
+  #   to: .agent/skills/python-project-scaffold
